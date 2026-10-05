@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Lab2.Console/Lab2.Console.csproj" />
+  <Project Path="Lab2.DataAccess/Lab2.DataAccess.csproj" />
+</Solution>
