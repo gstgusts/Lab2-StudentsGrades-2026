@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="Lab2.Console/Lab2.Console.csproj" />
   <Project Path="Lab2.DataAccess/Lab2.DataAccess.csproj" />
+  <Project Path="Lab3.ApiCallerConsole/Lab3.ApiCallerConsole.csproj" Id="9e76253d-4c8d-41b6-ac52-e8bb10814769" />
+  <Project Path="Lab3.WebApi/Lab3.WebApi.csproj" Id="f7ff24f1-3496-4828-b6c8-89cb7dba0c2f" />
 </Solution>
