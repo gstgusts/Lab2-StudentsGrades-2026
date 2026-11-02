@@ -1,0 +1,58 @@
+﻿<Window x:Class="Lab4.WpfComponents.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab4.WpfComponents"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Name"  Margin="5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="NameInput" Margin="5" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Surname" Margin="5"  />
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="SurnameInput" Margin="5" />
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+            <Button Content="Add student" Width="140" Margin="4" Click="Button_AddStudent_Click" />
+            <Button Content="Clear" Width="100" Margin="4" Click="Button_Clear_Click" />
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Height="200"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+
+                <StackPanel  Orientation="Vertical" Margin="5">
+                    <Label Content="Name" Target="{Binding ElementName=StudNameInput}"  />
+                    <TextBox TextChanged="StudNameInput_OnTextChanged" HorizontalAlignment="Left" Width="100"  Margin="5" x:Name="StudNameInput" />
+                    <Label Content="Surname" Target="{Binding ElementName=StudSurnameInput}" />
+                    <TextBox HorizontalAlignment="Left" Width="100" Margin="5" x:Name="StudSurnameInput" />
+                    <Label Content="Student number" Target="{Binding ElementName=StudNumberInput}"/>
+                     <TextBox HorizontalAlignment="Left" Width="100"  Margin="5" x:Name="StudNumberInput"/>
+                    <StackPanel Margin="15">
+                        <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="FailedOnlyCheckBox" Content="Show only failed grades" ></CheckBox>
+                            <Button x:Name="SearchStudents" Click="SearchStudents_OnClick">Search</Button>
+                        </StackPanel>
+                        <StackPanel>
+                            <RadioButton x:Name="SortByNameRadio"
+                                         Content="Name" GroupName="Sort" IsChecked="True" />
+                            <RadioButton Content="Surname" GroupName="Sort" />
+                        </StackPanel>
+                    <DataGrid x:Name="StudentList" AutoGenerateColumns="True" />
+                    </StackPanel>
+                </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Window>
