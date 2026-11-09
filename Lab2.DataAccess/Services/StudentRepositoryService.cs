@@ -18,6 +18,28 @@ namespace Lab2.DataAccess.Services
             return _dbContext.Students.Include(s => s.Grades).ToList();
         }
 
+        public IEnumerable<Student> Search(string? code, string? name, string? surname)
+        {
+            var query = _dbContext.Students.Include(s => s.Grades).AsQueryable();
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                query = query.Where(s => s.Code == code);
+            }
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(s => s.Name.Contains(name));
+            }
+
+            if (!string.IsNullOrEmpty(surname))
+            {
+                query = query.Where(s => s.Surname.Contains(surname));
+            }
+
+            return query.ToList();
+        }
+
         public Student? GetById(int id)
         {
             return _dbContext.Students.Include(s => s.Grades)

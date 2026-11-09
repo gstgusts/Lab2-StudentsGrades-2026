@@ -18,11 +18,11 @@ namespace Lab2.DataAccess
         public StudentDbContext(DbContextOptions<StudentDbContext> options) : base(options) { }
 
         // Uncomment if testing WPF MVVM
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //    => optionsBuilder.UseSqlServer(
-        //        @"Data Source=(LocalDB)\MSSQLLocalDB;
-        //                        AttachDbFilename=C:\Users\gusts\source\repos\Lab2\Lab2.DataAccess\Students.mdf;
-        //                        Integrated Security=True");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseSqlServer(
+                @"Data Source=(LocalDB)\MSSQLLocalDB;
+                                AttachDbFilename=C:\Users\gusts\source\repos\Lab2\Lab2.DataAccess\Students.mdf;
+                                Integrated Security=True");
 
     }
 }

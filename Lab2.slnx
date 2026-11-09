@@ -5,4 +5,5 @@
   <Project Path="Lab3.WebApi/Lab3.WebApi.csproj" Id="f7ff24f1-3496-4828-b6c8-89cb7dba0c2f" />
   <Project Path="Lab4.WebApi/Lab4.WebApi.csproj" Id="182f5cd9-8834-4e18-875f-341c7ea5ca1e" />
   <Project Path="Lab4.WpfComponents/Lab4.WpfComponents.csproj" Id="204b5b61-aa19-42ca-ba79-52f36c1c50a7" />
+  <Project Path="Lab4.WpfStudents/Lab4.WpfStudents.csproj" Id="23d72a8e-cb54-4942-bc62-0659728ef900" />
 </Solution>
