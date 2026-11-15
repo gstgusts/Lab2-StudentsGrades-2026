@@ -7,13 +7,19 @@ namespace Lab3.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class StudentsController : ControllerBase, IDisposable
     {
-        private StudentDbContext dbContext;
+        private readonly StudentDbContext dbContext;
 
         public StudentsController()
         {
             dbContext = new StudentDbContext();
+        }
+
+        // ASP.NET Core disposes controllers that implement IDisposable at the end of each request
+        public void Dispose()
+        {
+            dbContext.Dispose();
         }
 
         [HttpGet]

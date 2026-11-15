@@ -7,10 +7,8 @@
         xmlns:viewModels="clr-namespace:Lab4.WpfStudents.ViewModels"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=viewModels:StudentListViewModel, IsDesignTimeCreatable=False}"
         Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <viewModels:StudentListViewModel/>
-    </Window.DataContext>
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="EmptyToVisibilityConverter" />
     </Window.Resources>

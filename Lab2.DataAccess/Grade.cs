@@ -19,6 +19,6 @@ namespace Lab2.DataAccess
         //public Student Student { get; set; }
 
         [Required]
-        public Subject Subject { get; set; }
+        public Subject Subject { get; set; } = null!;
     }
 }

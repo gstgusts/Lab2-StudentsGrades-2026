@@ -10,7 +10,6 @@ namespace Lab2.DataAccess.Services
         public StudentRepositoryService(StudentDbContext dbContext)
         {
             _dbContext = dbContext;
-            _dbContext.Database.EnsureCreated();
         }
 
         public IEnumerable<Student> GetAll()
@@ -42,8 +41,15 @@ namespace Lab2.DataAccess.Services
 
         public Student? GetById(int id)
         {
-            return _dbContext.Students.Include(s => s.Grades)
+            return _dbContext.Students
+                .Include(s => s.Grades)
+                .ThenInclude(g => g.Subject)
                 .FirstOrDefault(s => s.Id == id);
+        }
+
+        public bool Exists(int id)
+        {
+            return _dbContext.Students.AsNoTracking().Any(s => s.Id == id);
         }
 
         public int Add(Student student)

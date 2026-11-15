@@ -43,7 +43,22 @@ namespace Lab4.WpfComponents
             };
 
             _studentDbContext.Students.Add(student);
-            _studentDbContext.SaveChanges();
+
+            try
+            {
+                _studentDbContext.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Stop tracking the rejected entity so it isn't retried on the next save
+                _studentDbContext.Entry(student).State = EntityState.Detached;
+                MessageBox.Show(
+                    $"Could not save the student. Check that the code is at most 10 characters.\n\n{ex.InnerException?.Message ?? ex.Message}",
+                    "Save failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            Button_Clear_Click(sender, e);
         }
 
         private void Button_Clear_Click(object sender, RoutedEventArgs e)

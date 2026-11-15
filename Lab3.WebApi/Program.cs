@@ -15,7 +15,7 @@ namespace Lab3.WebApi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
-            //https://localhost:7213/openapi/v1.json
+            //https://localhost:7139/openapi/v1.json
 
             var app = builder.Build();
 
@@ -24,19 +24,19 @@ namespace Lab3.WebApi
             {
                 app.MapOpenApi();
 
-                // https://localhost:7213/swagger/index.html
+                // https://localhost:7139/swagger/index.html
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("/openapi/v1.json", "OpenAPI V1");
                 });
 
-                // https://localhost:7213/api-docs/
+                // https://localhost:7139/api-docs/
                 app.UseReDoc(options =>
                 {
                     options.SpecUrl("/openapi/v1.json");
                 });
 
-                // https://localhost:7213/scalar/
+                // https://localhost:7139/scalar/
                 app.MapScalarApiReference();
             }
 
