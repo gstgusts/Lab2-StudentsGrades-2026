@@ -38,7 +38,7 @@ namespace Lab4.WebApi
                     .AllowAnyMethod());
             });
 
-            //https://localhost:7213/openapi/v1.json
+            //https://localhost:7069/openapi/v1.json
 
             var app = builder.Build();
 
@@ -47,28 +47,35 @@ namespace Lab4.WebApi
             {
                 app.MapOpenApi();
 
-                // https://localhost:7213/swagger/index.html
+                // https://localhost:7069/swagger/index.html
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("/openapi/v1.json", "OpenAPI V1");
                 });
 
-                // https://localhost:7213/api-docs/
+                // https://localhost:7069/api-docs/
                 app.UseReDoc(options =>
                 {
                     options.SpecUrl("/openapi/v1.json");
                 });
 
-                // https://localhost:7213/scalar/
+                // https://localhost:7069/scalar/
                 app.MapScalarApiReference();
+            }
+
+            // Apply pending EF Core migrations once at startup (replaces EnsureCreated in the repository)
+            using (var scope = app.Services.CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<StudentDbContext>().Database.Migrate();
             }
 
             app.UseHttpsRedirection();
 
+            // default cors policy (must run before authorization)
+            app.UseCors();
+
             app.UseAuthorization();
 
-            // default cors policy
-            app.UseCors();
             app.MapControllers();
 
             app.Run();

@@ -1,16 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace Lab4.WpfStudents.ViewModels
 {
-    public class BaseViewModel : ObservableObject, INotifyPropertyChanged
+    // ObservableObject already implements INotifyPropertyChanged and provides
+    // OnPropertyChanged([CallerMemberName]) and SetProperty(ref field, value).
+    public class BaseViewModel : ObservableObject
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
     }
 }

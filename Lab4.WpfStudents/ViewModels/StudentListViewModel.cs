@@ -49,7 +49,7 @@ namespace Lab4.WpfStudents.ViewModels
             set
             {
                 if (_name == value) return;
-                _code = value;
+                _name = value;
                 OnPropertyChanged();
             }
         }
@@ -97,7 +97,7 @@ namespace Lab4.WpfStudents.ViewModels
                 OnPropertyChanged();
             }
         }
-        public Student SelectedStudent { get; set; }
+        public Student? SelectedStudent { get; set; }
 
         private List<Grade> _grades = new List<Grade>();
 

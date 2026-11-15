@@ -5,6 +5,7 @@
         IEnumerable<Student> GetAll();
         IEnumerable<Student> Search(string? code, string? name, string? surname);
         Student? GetById(int id);
+        bool Exists(int id);
         int Add(Student student);
         void Update(Student student);
         void Delete(int id);

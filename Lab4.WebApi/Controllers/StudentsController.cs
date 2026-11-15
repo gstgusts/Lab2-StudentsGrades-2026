@@ -50,6 +50,11 @@ namespace Lab4.WebApi.Controllers
                 return BadRequest();
             }
 
+            if (!_repo.Exists(id))
+            {
+                return NotFound();
+            }
+
             _repo.Update(student);
             return NoContent();
         }
@@ -71,15 +76,12 @@ namespace Lab4.WebApi.Controllers
         [Route("{id}/Grades")]
         public IActionResult GetGrades(int id)
         {
-            try
-            {
-                var grades = _repo.GetGradesByStudentId(id);
-                return Ok(grades);
-            }
-            catch (ArgumentException ae)
+            if (!_repo.Exists(id))
             {
                 return NotFound();
             }
+
+            return Ok(_repo.GetGradesByStudentId(id));
         }
     }
 }

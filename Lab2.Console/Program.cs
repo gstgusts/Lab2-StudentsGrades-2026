@@ -1,6 +1,5 @@
 ﻿using Lab2.DataAccess;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Lab2.Console
 {

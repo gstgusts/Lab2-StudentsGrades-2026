@@ -12,15 +12,15 @@ namespace Lab2.DataAccess
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [StringLength(100)]
-        public string Surname { get; set; }
+        public string Surname { get; set; } = string.Empty;
 
         [Required]
         [StringLength(10)]
-        public string Code { get; set; }
+        public string Code { get; set; } = string.Empty;
 
         public List<Grade> Grades { get; } = new();
     }
