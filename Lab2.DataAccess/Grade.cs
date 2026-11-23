@@ -10,15 +10,14 @@ namespace Lab2.DataAccess
         [Key]
         public int Id { get; set; }
 
-            
         public int? Value { get; set; }
 
         [StringLength(200)]
         public string? Comment { get; set; }
 
-        //public Student Student { get; set; }
-
         [Required]
         public Subject Subject { get; set; } = null!;
+
+        public DateTime? Date { get; set; }
     }
 }
